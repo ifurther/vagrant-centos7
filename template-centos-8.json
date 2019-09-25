@@ -2,7 +2,7 @@
   "builders": [
     {
       "boot_command": [
-        "<up><wait><tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
+        "<up><wait><tab> inst.text inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{ user `ks_path` }}<enter><wait>"
       ],
       "boot_wait": "10s",
       "disk_size": "{{user `disk_size`}}",
@@ -103,14 +103,11 @@
     },
     {
       "boot_command": [
-        "<wait5><tab> text inst.ks=hd:fd0:/ks.cfg<enter><wait5><esc>"
+        "<up><wait><tab> inst.text inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{ user `ks_path` }}<enter><wait>"
       ],
       "boot_wait": "10s",
       "cpus": "{{ user `cpus` }}",
       "disk_size": "{{user `disk_size`}}",
-      "floppy_files": [
-        "http/{{ user `ks_path` }}"
-      ],
       "generation": "{{user `hyperv_generation`}}",
       "guest_additions_mode": "disable",
       "http_directory": "http",
