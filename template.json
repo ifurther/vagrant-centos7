@@ -169,11 +169,11 @@
     "iso_checksum": "38d5d51d9d100fd73df031ffd6bd8b1297ce24660dc8c13a3b8b4534a4bd291c",
     "iso_checksum_type": "sha256",
     "iso_name": "CentOS-7-x86_64-Minimal-1810.iso",
-    "ks_path": "7/ks.cfg",
+    "ks_path": "centos-7.6/ks.cfg",
     "memory": "1024",
     "mirror": "http://ftp.ksu.edu.tw/pub/CentOS",
     "mirror_directory": "7.6.1810/isos/x86_64",
-    "name": "centos-7.5",
+    "name": "centos-7.6",
     "no_proxy": "{{env `no_proxy`}}",
     "template": "centos-7.6-x86_64",
     "version": "TIMESTAMP"
