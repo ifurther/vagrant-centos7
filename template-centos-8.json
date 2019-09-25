@@ -156,7 +156,7 @@
     }
   ],
   "variables": {
-    "box_basename": "centos7-x64",
+    "box_basename": "centos8-x64",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "cpus": "1",
     "disk_size": "20480",
