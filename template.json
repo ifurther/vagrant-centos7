@@ -175,7 +175,7 @@
     "mirror_directory": "7.6.1810/isos/x86_64",
     "name": "centos-7.5",
     "no_proxy": "{{env `no_proxy`}}",
-    "template": "centos-7.5-x86_64",
+    "template": "centos-7.6-x86_64",
     "version": "TIMESTAMP"
   }
 }
