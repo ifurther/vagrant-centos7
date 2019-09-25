@@ -166,16 +166,16 @@
     "https_proxy": "{{env `https_proxy`}}",
     "hyperv_generation": "1",
     "hyperv_switch": "{{env `hyperv_switch`}}",
-    "iso_checksum": "38d5d51d9d100fd73df031ffd6bd8b1297ce24660dc8c13a3b8b4534a4bd291c",
+    "iso_checksum": "a7993a0d4b7fef2433e0d4f53530b63c715d3aadbe91f152ee5c3621139a2cbc",
     "iso_checksum_type": "sha256",
-    "iso_name": "CentOS-7-x86_64-Minimal-1810.iso",
-    "ks_path": "centos-7.6/ks.cfg",
+    "iso_name": "CentOS-8-x86_64-1905-boot.iso",
+    "ks_path": "centos-8/ks.cfg",
     "memory": "1024",
     "mirror": "http://ftp.ksu.edu.tw/pub/CentOS",
-    "mirror_directory": "7.6.1810/isos/x86_64",
-    "name": "centos-7.6",
+    "mirror_directory": "8.0.1905/isos/x86_64",
+    "name": "centos-8",
     "no_proxy": "{{env `no_proxy`}}",
-    "template": "centos-7.6-x86_64",
+    "template": "centos-8-x86_64",
     "version": "TIMESTAMP"
   }
 }
