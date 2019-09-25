@@ -171,7 +171,7 @@
     "iso_name": "CentOS-7-x86_64-Minimal-1810.iso",
     "ks_path": "7/ks.cfg",
     "memory": "1024",
-    "mirror": "http://ftp.ksu.edu.tw",
+    "mirror": "http://ftp.ksu.edu.tw/pub/CentOS",
     "mirror_directory": "7.6.1810/isos/x86_64",
     "name": "centos-7.5",
     "no_proxy": "{{env `no_proxy`}}",
