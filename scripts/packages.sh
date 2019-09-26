@@ -26,23 +26,31 @@ yum -y remove \
 e "Add /usr/local/bin to the \$PATH."
 echo "export PATH=\$PATH:/usr/local/bin" >> /etc/bashrc
 
-e "Remove all .repo files."
-rm -f /etc/yum.repos.d/*
+major_version="`sed 's/^.\+ release \([.0-9]\+\).*/\1/' /etc/redhat-release | awk -F. '{print $1}'`";
 
-e "Add a set of known/trusted repos."
-curl -s -o /etc/yum.repos.d/centos7.repo https://raw.githubusercontent.com/skyzyx/centos7-repos/master/centos7.repo
+if [ "$major_version" -ge 6 ] && [ "$major_version" -le 7 ]; then
+   e "Add a set of known/trusted repos."
+   curl -s -o /etc/yum.repos.d/centos7.repo https://raw.githubusercontent.com/skyzyx/centos7-repos/master/centos7.repo
+fi
+
 
 e "Sync the correct packages for the distro."
 yum -y distro-sync
 
-e "Remove any errant CentOS repo files."
-rm -f /etc/yum.repos.d/CentOS-*
+#e "Remove any errant CentOS repo files."
+#rm -f /etc/yum.repos.d/CentOS-*
 
 e "Clean the Yum cache"
 yum clean all
 
 e "Install new packages"
 yum -y groupinstall "Development Tools"
+
+
+if [ "$major_version" -ge 6 ] && [ "$major_version" -le 7 ]; then
+   yum install -y centos7-repos
+fi
+
 yum -y install \
     bash \
     bash-completion \
@@ -50,7 +58,6 @@ yum -y install \
     bzip2 \
     ca-certificates \
     cpp \
-    centos7-repos \
     cronie \
     cronie-anacron \
     crontabs \
@@ -85,7 +92,6 @@ yum -y install \
     psmisc \
     readline \
     rpm \
-    rsync \
     screen \
     sed \
     setuptool \
@@ -113,6 +119,7 @@ yum -y install \
     yum-plugin-versionlock \
     yum-utils \
     zip \
+	zsh \
     zlib \
 ;
 
