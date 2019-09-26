@@ -1,9 +1,11 @@
 #!/bin/bash
 set -x
 
+export PATH=$PATH:/usr/local/bin
+
 TERRAFORM_VERSION="0.10.1"
 PACKER_VERSION="1.4.3"
-VAGRANT_VERSION="2.2.2"
+VAGRANT_VERSION="2.2.5"
 
 
 # install pip
@@ -19,7 +21,7 @@ pip install -U awscli
 pip install -U awsebcli
 
 #vagrant
-V_VERSION=$(vagrant.exe -v | head -1 | cut -d ' ' -f 2)
+V_VERSION=$(vagrant -v | head -1 | cut -d ' ' -f 2)
 V_RETVAL=${PIPESTATUS[0]}
 
 [[ $V_VERSION != $VAGRANT_VERSION ]] || [[ $V_RETVAL != 0 ]] \
