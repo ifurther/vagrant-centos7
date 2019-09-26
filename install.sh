@@ -18,7 +18,12 @@ pip install -U awscli
 pip install -U awsebcli
 
 #vagrant
-yum install -y https://releases.hashicorp.com/vagrant/${VAGRANT_VERSION}/vagrant_${VAGRANT_VERSION}_x86_64.rpm
+V_VERSION=$(vagrant.exe -v | head -1 | cut -d ' ' -f 2)
+V_RETVAL=${PIPESTATUS[0]}
+
+[[ $V_VERSION != $VAGRANT_VERSION ]] || [[ $V_RETVAL != 0 ]] \
+&& yum install -y https://releases.hashicorp.com/vagrant/${VAGRANT_VERSION}/vagrant_${VAGRANT_VERSION}_x86_64.rpm
+
 
 #terraform
 T_VERSION=$(terraform -v | head -1 | cut -d ' ' -f 2 | tail -c +2)
