@@ -43,12 +43,29 @@ yum -y distro-sync
 e "Clean the Yum cache"
 yum clean all
 
+e "Install EPEL repo"
+yum install -y epel-release
+
 e "Install new packages"
 yum -y groupinstall "Development Tools"
 
 
 if [ "$major_version" -ge 6 ] && [ "$major_version" -le 7 ]; then
-   yum install -y centos7-repos
+   yum install -y centos7-repos \
+                  ntp \
+                  ntpdate \
+				  setuptool \
+				  deltarpm \
+                  iftop \
+				  tcp_wrappers \
+				  yum-plugin-fastestmirror \
+                  yum-plugin-list-data \
+				  yum-cron \
+				  yum-plugin-ps \
+                  yum-plugin-show-leaves \
+                  yum-plugin-upgrade-helper \
+				  yum-plugin-aliases
+                   
 fi
 
 yum -y install \
@@ -62,14 +79,11 @@ yum -y install \
     cronie-anacron \
     crontabs \
     curl \
-    deltarpm \
     gawk \
     gcc  \
     gcc-c++  \
     glib2 \
     glibc \
-    htop \
-    iftop \
     iptables \
     iputils \
     kernel-devel-`uname -r`  \
@@ -79,10 +93,10 @@ yum -y install \
     make \
     nano \
     nc \
+	screen \
+	htop \
     net-tools \
     nscd \
-    ntp \
-    ntpdate \
     openssh \
     openssh-clients \
     openssh-server \
@@ -94,12 +108,9 @@ yum -y install \
     rpm \
     screen \
     sed \
-    setuptool \
     strace \
     sysstat \
     tcpdump \
-    tcp_wrappers \
-    telnet \
     traceroute \
     tree \
     tzdata \
@@ -108,16 +119,9 @@ yum -y install \
     wget \
     xz \
     yum \
-    yum-cron \
-    yum-plugin-aliases \
     yum-plugin-changelog \
-    yum-plugin-fastestmirror \
-    yum-plugin-list-data \
-    yum-plugin-ps \
-    yum-plugin-show-leaves \
-    yum-plugin-upgrade-helper \
-    yum-plugin-versionlock \
     yum-utils \
+	yum-plugin-versionlock \
     zip \
 	zsh \
     zlib \
