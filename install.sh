@@ -12,6 +12,7 @@ if [[ $? == 127 ]]; then
     wget -q https://bootstrap.pypa.io/get-pip.py
     python get-pip.py
     python3 get-pip.py
+    rm -rf get-pip.py
 fi
 # install awscli and ebcli
 pip install -U awscli
