@@ -58,6 +58,7 @@ if [ "$major_version" -ge 6 ] && [ "$major_version" -le 7 ]; then
 				  deltarpm \
                   iftop \
 				  tcp_wrappers \
+				  libselinux-python \
 				  yum-plugin-fastestmirror \
                   yum-plugin-list-data \
 				  yum-cron \
@@ -66,6 +67,9 @@ if [ "$major_version" -ge 6 ] && [ "$major_version" -le 7 ]; then
                   yum-plugin-upgrade-helper \
 				  yum-plugin-aliases
                    
+fi
+if [ "$major_version" -ge 6 ] && [ "$major_version" -le 7 ]; then
+yum -y install python3-libselinux
 fi
 
 yum -y install \
@@ -89,7 +93,6 @@ yum -y install \
     kernel-devel-`uname -r`  \
     kernel-headers-`uname -r` \
     libcgroup \
-    libselinux-python \
     make \
     nano \
     nc \
