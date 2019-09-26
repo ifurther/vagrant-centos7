@@ -28,10 +28,10 @@ echo "export PATH=\$PATH:/usr/local/bin" >> /etc/bashrc
 
 major_version="`sed 's/^.\+ release \([.0-9]\+\).*/\1/' /etc/redhat-release | awk -F. '{print $1}'`";
 
-if [ "$major_version" -ge 6 ] && [ "$major_version" -le 7 ]; then
-   e "Add a set of known/trusted repos."
-   curl -s -o /etc/yum.repos.d/centos7.repo https://raw.githubusercontent.com/skyzyx/centos7-repos/master/centos7.repo
-fi
+#if [ "$major_version" -ge 6 ] && [ "$major_version" -le 7 ]; then
+#   e "Add a set of known/trusted repos."
+#   curl -s -o /etc/yum.repos.d/centos7.repo https://raw.githubusercontent.com/skyzyx/centos7-repos/master/centos7.repo
+#fi
 
 
 e "Sync the correct packages for the distro."
@@ -68,7 +68,7 @@ if [ "$major_version" -ge 6 ] && [ "$major_version" -le 7 ]; then
 				  yum-plugin-aliases
                    
 fi
-if [ "$major_version" -ge 6 ] && [ "$major_version" -le 7 ]; then
+if [ "$major_version" -ge 8 ]; then
 yum -y install python3-libselinux
 fi
 
