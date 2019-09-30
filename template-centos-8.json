@@ -2,7 +2,7 @@
   "builders": [
     {
       "boot_command": [
-        "<up><wait><tab> inst.text inst.proxy=http://{{ .HTTPIP }}:3128 inst.repo=http://mirror01.idc.hinet.net/centos/8.0.1905/BaseOS/x86_64/kickstart/ inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{ user `ks_path` }}<enter><wait>"
+        "<up><wait><tab> inst.text inst.proxy=http://{{ .HTTPIP }}:3128 inst.repo={{ user `mirror` }}/8.0.1905/BaseOS/x86_64/kickstart/ inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{ user `ks_path` }}<enter><wait>"
       ],
       "boot_wait": "10s",
       "disk_size": "{{user `disk_size`}}",
@@ -40,7 +40,7 @@
     },
     {
       "boot_command": [
-        "<up><wait><tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
+        "<up><wait><tab> inst.text inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{ user `ks_path` }}<enter><wait>"
       ],
       "boot_wait": "10s",
       "disk_size": "{{user `disk_size`}}",
@@ -67,7 +67,7 @@
     },
     {
       "boot_command": [
-        "<up><wait><tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
+        "<up><wait><tab> inst.text inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{ user `ks_path` }}<enter><wait>"
       ],
       "boot_wait": "10s",
       "disk_size": "{{user `disk_size`}}",
@@ -103,7 +103,7 @@
     },
     {
       "boot_command": [
-        "<up><wait><tab> inst.text inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
+        "<up><wait><tab> inst.text inst.repo={{ user `mirror` }}/8.0.1905/BaseOS/x86_64/kickstart/ inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
       ],
       "boot_wait": "10s",
       "cpus": "{{ user `cpus` }}",
@@ -170,7 +170,7 @@
     "memory": "1024",
     "mirror": "http://ftp.ksu.edu.tw/pub/CentOS",
     "mirror_directory": "8.0.1905/isos/x86_64",
-    "name": "centos-8",
+    "name": "centos-8.0",
     "no_proxy": "{{env `no_proxy`}}",
     "template": "centos-8-x86_64",
     "version": "TIMESTAMP"
