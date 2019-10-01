@@ -2,7 +2,7 @@
   "builders": [
     {
       "boot_command": [
-        "<up><wait><tab> inst.text inst.proxy=http://{{ .HTTPIP }}:3128 inst.repo=http://mirror01.idc.hinet.net/centos/8.0.1905/BaseOS/x86_64/kickstart/ inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{ user `ks_path` }}<enter><wait>"
+        "<up><wait><tab> inst.text inst.proxy=http://{{ .HTTPIP }}:3128 inst.repo={{ user `mirror` }}/{{ user `centosversion` }}/BaseOS/x86_64/kickstart/ inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{ user `ks_path` }}<enter><wait>"
       ],
       "boot_wait": "10s",
       "disk_size": "{{user `disk_size`}}",
@@ -40,7 +40,7 @@
     },
     {
       "boot_command": [
-        "<up><wait><tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
+        "<up><wait><tab> inst.text  inst.repo={{ user `mirror` }}/{{ user `centosversion` }}/BaseOS/x86_64/kickstart/ inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{ user `ks_path` }}<enter><wait>"
       ],
       "boot_wait": "10s",
       "disk_size": "{{user `disk_size`}}",
@@ -67,7 +67,7 @@
     },
     {
       "boot_command": [
-        "<up><wait><tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
+        "<up><wait><tab> inst.text inst.repo={{ user `mirror` }}/{{ user `centosversion` }}/BaseOS/x86_64/kickstart/ inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{ user `ks_path` }}<enter><wait>"
       ],
       "boot_wait": "10s",
       "disk_size": "{{user `disk_size`}}",
@@ -103,7 +103,7 @@
     },
     {
       "boot_command": [
-        "<up><wait><tab> inst.text inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
+        "<up><wait>c inst.text inst.repo={{ user `mirror` }}/{{ user `centosversion` }}/BaseOS/x86_64/kickstart/ inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
       ],
       "boot_wait": "10s",
       "cpus": "{{ user `cpus` }}",
@@ -161,15 +161,16 @@
     "headless": "",
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
-    "hyperv_generation": "1",
+    "hyperv_generation": "2",
     "hyperv_switch": "{{env `hyperv_switch`}}",
+	"centosversion": "8.0.1905",
     "iso_checksum": "a7993a0d4b7fef2433e0d4f53530b63c715d3aadbe91f152ee5c3621139a2cbc",
     "iso_checksum_type": "sha256",
     "iso_name": "CentOS-8-x86_64-1905-boot.iso",
-    "ks_path": "centos-8/ks.cfg",
+    "ks_path": "centos-8.0/ks.cfg",
     "memory": "1024",
     "mirror": "http://ftp.ksu.edu.tw/pub/CentOS",
-    "mirror_directory": "8.0.1905/isos/x86_64",
+    "mirror_directory": "{{ user `centosversion` }}/isos/x86_64",
     "name": "centos-8",
     "no_proxy": "{{env `no_proxy`}}",
     "template": "centos-8-x86_64",
