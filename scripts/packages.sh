@@ -71,7 +71,9 @@ fi
 if [ "$major_version" -ge 8 ]; then
 yum -y install \
     python3-libselinux \
-	dkms 
+	dkms \
+	cifs-utils \
+	elfutils-libelf-devel
 fi
 
 yum -y install \
