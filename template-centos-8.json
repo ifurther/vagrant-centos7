@@ -108,8 +108,7 @@
       "boot_wait": "10s",
       "cpus": "{{ user `cpus` }}",
       "disk_size": "{{user `disk_size`}}",
-      "generation": "{{user `hyperv_generation`}}",
-      "guest_additions_mode": "disable",
+	"format": "qcow2",
       "http_directory": "http",
       "iso_checksum": "{{user `iso_checksum`}}",
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
@@ -121,7 +120,6 @@
       "ssh_port": 22,
       "ssh_timeout": "10000s",
       "ssh_username": "vagrant",
-      "switch_name": "{{ user `hyperv_switch`}}",
       "type": "quemu",
       "vm_name": "{{ user `template` }}"
     },
