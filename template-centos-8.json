@@ -120,7 +120,7 @@
       "ssh_port": 22,
       "ssh_timeout": "10000s",
       "ssh_username": "vagrant",
-      "type": "quemu",
+      "type": "qemu",
       "vm_name": "{{ user `template` }}"
     },
     {
