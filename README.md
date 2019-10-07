@@ -1,3 +1,5 @@
+# tested CentOS 8.0 Vagrant
+
 # CentOS 7.5 Vagrant/Docker Boxes
 
 > **IMPORTANT:** CentOS 7.5 is the _final_ version that I will be building of this AMI. Moving forward, my VM-building efforts will be going primarily into Amazon Linux 2.
@@ -58,8 +60,12 @@ This is simply a good thing to do from time to time.
 ```bash
 vagrant plugin update
 ```
+## For CentOS 
+The "install.sh" is for CentOS install vagrant and packer , but the command of packer is "packer.io".
+The file is from "https://gist.github.com/bbenson29/ab5be21dd13631febbc7cd7826ec3607"
 
-## Installing Packer
+## For MacOS
+### Installing Packer
 
 I'm going to assume that you have already:
 
