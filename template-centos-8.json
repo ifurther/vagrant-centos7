@@ -103,13 +103,16 @@
     },
     {
       "boot_command": [
-        "<up><wait>c inst.text inst.repo={{ user `mirror` }}/{{ user `centosversion` }}/BaseOS/x86_64/kickstart/ inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
+	    "c  setparams 'kickstart' <enter> linuxefi /images/pxeboot/vmlinuz inst.stage2=hd:LABEL=CentOS\\x207\\x20x\\86_64 inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter> initrdefi /images/pxeboot/initrd.img<enter> boot<enter>"
       ],
       "boot_wait": "10s",
       "cpus": "{{ user `cpus` }}",
       "disk_size": "{{user `disk_size`}}",
       "generation": "{{user `hyperv_generation`}}",
       "guest_additions_mode": "disable",
+	  "enable_mac_spoofing": "true",
+      "enable_dynamic_memory": "false",
+      "enable_virtualization_extensions": "true",
       "http_directory": "http",
       "iso_checksum": "{{user `iso_checksum`}}",
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
@@ -170,13 +173,9 @@
     "ks_path": "centos-8.0/ks.cfg",
     "memory": "1024",
     "mirror": "http://ftp.ksu.edu.tw/pub/CentOS",
-<<<<<<< HEAD
     "mirror_directory": "8.0.1905/isos/x86_64",
     "name": "centos-8.0",
-=======
     "mirror_directory": "{{ user `centosversion` }}/isos/x86_64",
-    "name": "centos-8",
->>>>>>> b0e1179a5403db01867b0bb1eee71b0b694ce402
     "no_proxy": "{{env `no_proxy`}}",
     "template": "centos-8-x86_64",
     "version": "TIMESTAMP"
