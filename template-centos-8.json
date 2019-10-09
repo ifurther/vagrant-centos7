@@ -103,7 +103,30 @@
     },
     {
       "boot_command": [
-	    "c  setparams 'kickstart' <enter> linuxefi /images/pxeboot/vmlinuz inst.stage2=hd:LABEL=CentOS\\x207\\x20x\\86_64 inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter> initrdefi /images/pxeboot/initrd.img<enter> boot<enter>"
+        "<up><wait><tab> inst.text inst.proxy=http://{{ .HTTPIP }}:3128 inst.repo={{ user `mirror` }}/{{ user `centosversion` }}/BaseOS/x86_64/kickstart/ inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{ user `ks_path` }}<enter><wait>"
+      ],
+      "boot_wait": "10s",
+      "cpus": "{{ user `cpus` }}",
+      "disk_size": "{{user `disk_size`}}",
+      "format": "qcow2",
+      "accelerator": "kvm",
+      "headless": "{{ user `headless` }}",      "http_directory": "http",
+      "iso_checksum": "{{user `iso_checksum`}}",
+      "iso_checksum_type": "{{user `iso_checksum_type`}}",
+      "iso_url": "{{user `mirror`}}/{{user `mirror_directory`}}/{{user `iso_name`}}",
+      "output_directory": "../builds/packer-{{user `template`}}-qemu",
+      "memory": "{{ user `memory` }}",
+      "shutdown_command": "echo 'vagrant' | sudo -S /sbin/halt -h -p",
+      "ssh_password": "vagrant",
+      "ssh_port": 22,
+      "ssh_timeout": "10000s",
+      "ssh_username": "vagrant",
+      "type": "qemu",
+      "vm_name": "{{ user `template` }}"
+    },
+    {
+      "boot_command": [
+        "<up><wait>c inst.text inst.repo={{ user `mirror` }}/{{ user `centosversion` }}/BaseOS/x86_64/kickstart/ inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `ks_path`}}<enter><wait>"
       ],
       "boot_wait": "10s",
       "cpus": "{{ user `cpus` }}",
