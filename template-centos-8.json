@@ -195,7 +195,7 @@
     "iso_name": "CentOS-8-x86_64-1905-boot.iso",
     "ks_path": "centos-8.0/ks.cfg",
     "memory": "1024",
-    "mirror": "http://ftp.ksu.edu.tw/pub/CentOS",
+    "mirror": "http://free.nchc.org.tw/centos",
     "mirror_directory": "8.0.1905/isos/x86_64",
     "name": "centos-8.0",
     "mirror_directory": "{{ user `centosversion` }}/isos/x86_64",
