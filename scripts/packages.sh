@@ -4,6 +4,16 @@ e() {
   echo -e "  \e[1;32m[install] ==> $@\e[0m";
 }
 
+e "Add /usr/local/bin to the \$PATH."
+echo "export PATH=\$PATH:/usr/local/bin" >> /etc/bashrc
+
+major_version="`sed 's/^.\+ release \([.0-9]\+\).*/\1/' /etc/redhat-release | awk -F. '{print $1}'`";
+
+#if [ "$major_version" -ge 6 ] && [ "$major_version" -le 7 ]; then
+#   e "Add a set of known/trusted repos."
+#   curl -s -o /etc/yum.repos.d/centos7.repo https://raw.githubusercontent.com/skyzyx/centos7-repos/master/centos7.repo
+#fi
+if [ "$major_version" -ge 6 ] && [ "$major_version" -le 7 ]; then
 e "Remove known-bad or known-conflicting packages."
 yum -y remove \
     check-mk-agent* \
@@ -22,17 +32,7 @@ yum -y remove \
     php-pdo-5.3* \
     php-snmp-5.3* \
 ;
-
-e "Add /usr/local/bin to the \$PATH."
-echo "export PATH=\$PATH:/usr/local/bin" >> /etc/bashrc
-
-major_version="`sed 's/^.\+ release \([.0-9]\+\).*/\1/' /etc/redhat-release | awk -F. '{print $1}'`";
-
-#if [ "$major_version" -ge 6 ] && [ "$major_version" -le 7 ]; then
-#   e "Add a set of known/trusted repos."
-#   curl -s -o /etc/yum.repos.d/centos7.repo https://raw.githubusercontent.com/skyzyx/centos7-repos/master/centos7.repo
-#fi
-
+fi
 
 e "Sync the correct packages for the distro."
 yum -y distro-sync
@@ -57,6 +57,7 @@ if [ "$major_version" -ge 6 ] && [ "$major_version" -le 7 ]; then
 				  setuptool \
 				  deltarpm \
                   iftop \
+				  python3 python3-pip \
 				  tcp_wrappers \
 				  libselinux-python \
 				  yum-plugin-fastestmirror \
@@ -66,7 +67,7 @@ if [ "$major_version" -ge 6 ] && [ "$major_version" -le 7 ]; then
                   yum-plugin-show-leaves \
                   yum-plugin-upgrade-helper \
 				  yum-plugin-aliases
-                   
+   alternatives --set python /usr/bin/python3
 fi
 if [ "$major_version" -ge 8 ]; then
 yum -y install \

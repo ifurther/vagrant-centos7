@@ -103,7 +103,7 @@
     },
     {
       "boot_command": [
-        "<up><wait><tab> inst.text inst.proxy=http://{{ .HTTPIP }}:3128 inst.repo={{ user `mirror` }}/{{ user `centosversion` }}/BaseOS/x86_64/kickstart/ inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{ user `ks_path` }}<enter><wait>"
+        "<up><wait><tab> inst.text inst.repo={{ user `mirror` }}/{{ user `centosversion` }}/BaseOS/x86_64/kickstart/ inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{ user `ks_path` }}<enter><wait>"
       ],
       "boot_wait": "10s",
       "cpus": "{{ user `cpus` }}",
