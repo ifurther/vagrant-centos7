@@ -45,6 +45,9 @@ yum clean all
 
 e "Install EPEL repo"
 yum install -y epel-release
+if [ "$major_version" -ge 8 ]; then
+yum config-manager –set-enabled PowerTools
+fi
 
 e "Install new packages"
 yum -y groupinstall "Development Tools"
